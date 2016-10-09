@@ -5,5 +5,13 @@
 (function () {
     'use strict';
     angular.
-    module('app', ['ngRoute', 'ui.router']);
+    module('app',
+    ['ngRoute',
+     'ui.router',
+     'LocalStorageModule',
+     'ngAnimate',
+     'ngSanitize',
+     'ui.bootstrap'
+    ]);
+
 })();

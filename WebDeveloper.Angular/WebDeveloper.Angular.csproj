@@ -107,11 +107,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\components\modal-popup\modal-popup.html" />
+    <Content Include="app\components\modal-popup\modalpopup.directive.js" />
     <Content Include="app\home.html" />
     <Content Include="app\private\person\directives\person-card\person-card.html" />
     <Content Include="app\private\person\directives\person-card\person.card.directive.js" />
+    <Content Include="app\private\person\directives\person-edit\person-edit.html" />
     <Content Include="app\private\person\person.controller.js" />
     <Content Include="app\private\person\person.html" />
+    <Content Include="app\public\login\login.controller.js" />
+    <Content Include="app\public\login\login.html" />
+    <Content Include="app\shared\authentication.service.js" />
     <Content Include="app\shared\data.service.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -122,9 +128,11 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-cookies.js" />
+    <Content Include="Scripts\angular\angular-local-storage.js" />
     <Content Include="Scripts\angular\angular-route.js" />
     <Content Include="Scripts\angular\angular-sanitize.js" />
     <Content Include="Scripts\angular\angular-ui-router.js" />
+    <Content Include="Scripts\angular\ui-bootstrap.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
@@ -151,6 +159,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\app.routes.js" />
+    <Content Include="app\private\person\directives\person-edit\person.edit.directive.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -36,6 +36,13 @@ namespace WebDeveloper.API.Controllers
             return Ok(_repository.PaginatedList(p => p.ModifiedDate, page.Value, size.Value));
 
         }
+        [HttpGet]
+        [Route("totalrows")]
+        public IHttpActionResult Rows()
+        {
+            return Ok(_repository.GetList().Count);
+
+        }
 
         [HttpPut]
         [Route("")]
@@ -98,11 +105,11 @@ namespace WebDeveloper.API.Controllers
 
 
         [HttpDelete]
-        [Route("")]
-        public IHttpActionResult Delete(Person person)
+        [Route("{id:int}")]
+        public IHttpActionResult Delete(int? id)
         {
-           if (person==null) return BadRequest();
-            //person = _repository.GetById(x => x.BusinessEntityID == person.BusinessEntityID);
+            if (!id.HasValue) return BadRequest();
+            var person = _repository.GetById(x => x.BusinessEntityID == id.Value);
             _repository.Delete(person);
             return Ok();
         }

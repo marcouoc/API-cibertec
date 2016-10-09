@@ -1,17 +1,110 @@
-﻿<div ng-controller="personController as vm">
+﻿<!--el ambito del controlador es todo el div-->
+<div ng-controller="personController as vm">
     <h1>{{vm.title}}</h1>
-    <!--<div ng-repeat="person  in vm.personList">
-        <label>Person ID:</label>
-        {{person.BusinessEntityID}}
+    
+    <div class="row">
+        <div class="btn-group"
+             uib-dropdown>
+            <button class="btn btn-default"
+                    uib-dropdown-toggle>
+                {{vm.rowSize}}<span class="caret"></span>
+            </button>
+            <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem" ng-click="vm.setRowSize(15)">
+                    <a href>15</a>
+                </li>
+                <li role="menuitem" ng-click="vm.setRowSize(30)">
+                    <a href>30</a>
+                </li>
+                <li role="menuitem" ng-click="vm.setRowSize(50)">
+                    <a href>50</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row">
+        <ul uib-pagination boundary-links="true"
+            total-items="vm.totalRows"
+            class="pagination-lg nomargin"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            max-size="vm.maxSize"
+            itemas-per-page="vm.rowSize"
+            ng-model="vm.currentPage"
+            ng-change="vm.pageChanged()">
+        </ul>
 
-    </div>-->
+    </div>
+    
+    <div>
+        <a href="" class="btn btn-success"
+           ng-click="vm.create();"
+           data-toggle="modal"
+           data-target="#modal-container">
+            <span class="glyphicon glyphicon-plus"/>Create
+        </a>
+
+    </div>
+
     <person-card ng-repeat="person  in vm.personList"
                  person-id="{{person.businessEntityID}}"
                  first-name="{{person.firstName}}"
                  last-name="{{person.lastName}}"
                  modified-date="{{person.modifiedDate}}">
+        <!-- ng-click puede llmar varias funciones-->
+        <a href="" class="btn btn-success" 
+           ng-click="vm.getPersonDetail(person.businessEntityID);vm.update();"
+           data-toggle="modal"
+           data-target="#modal-container">
+            <span class="glyphicon glyphicon-edit">Edit</span>
+        </a>
 
+        <a href="" class="btn btn-success"
+           ng-click="vm.getPersonDetail(person.businessEntityID);vm.details();"
+           data-toggle="modal"
+           data-target="#modal-container">
+            <span class="glyphicon glyphicon-list">Detail</span>
+        </a>
+
+        <a href="" class="btn btn-danger"
+           ng-click="vm.getPersonDetail(person.businessEntityID);vm.delete();"
+           data-toggle="modal"
+           data-target="#modal-container">
+            <span class="glyphicon glyphicon-remove">Delete</span>
+        </a>
 
     </person-card>
+
+    <modal-popup title="Person"
+                 button-title="{{vm.buttonTitle}}"
+                 save-function="vm.modalFunction"
+                 read-only="vm.readOnly"
+                 is-delete="vm.isDelete">
+
+
+   
+        <person-edit person="vm.person"
+                     read-only="vm.readOnly"></person-edit>
+    </modal-popup>
+
+
+    <div class="row">
+        <ul uib-pagination boundary-links="true"
+            total-items="vm.totalRows"
+            class="pagination-lg nomargin"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            max-size="vm.maxSize"
+            itemas-per-page="vm.rowSize"
+            ng-model="vm.currentPage"
+            ng-change="vm.pageChanged()"></ul>
+
+    </div>
+
 
 </div>
